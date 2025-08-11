@@ -1,0 +1,9 @@
+<h1>Lista de Tarefas</h1>
+<a href="{% url 'criar_tarefa' %}">Criar nova tarefa</a>
+<ul>
+  {% for tarefa in tarefas %}
+    <li>{{ tarefa.titulo }} - {{ tarefa.descricao }}</li>
+  {% empty %}
+    <li>Nenhuma tarefa cadastrada.</li>
+  {% endfor %}
+</ul>
