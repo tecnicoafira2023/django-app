@@ -1,0 +1,6 @@
+<h2>🗑️ Tem certeza que deseja excluir a Tarefa <span style="color:crimson;">"{{ object.title }}"</span>?</h2>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Confirmar Exclusão</button>
+  <a href="{% url 'listar_tarefas' %}">Cancelar</a>
+</form>

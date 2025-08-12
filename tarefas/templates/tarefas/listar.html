@@ -1,9 +1,26 @@
 <h1>Lista de Tarefas</h1>
+
 <a href="{% url 'criar_tarefa' %}">Criar nova tarefa</a>
+
 <ul>
   {% for tarefa in tarefas %}
-    <li>{{ tarefa.titulo }} - {{ tarefa.descricao }}</li>
+    <li>
+      <strong>{{ tarefa.title }}</strong> – {{ tarefa.description }}
+      {% if tarefa.deadline and tarefa.deadline < today and not tarefa.done %}
+        <span style="color:red;">⚠️ Vencida</span>
+      {% endif %}
+      {% if tarefa.done %}
+        <span style="color:green;">✔️ Concluída</span>
+      {% else %}
+        <a href="{% url 'alternar_status' tarefa.id %}">✅ Marcar como concluída</a>
+      {% endif %}
+      |
+      <a href="{% url 'editar_tarefa' tarefa.id %}">✏️ Editar</a>
+      <a href="{% url 'excluir_tarefa' tarefa.id %}">🗑️ Excluir</a>
+    </li>
   {% empty %}
     <li>Nenhuma tarefa cadastrada.</li>
   {% endfor %}
 </ul>
+
+<a href="{% url 'limpar_concluidas' %}" style="color:red;">🧹 Limpar tarefas concluídas</a>
