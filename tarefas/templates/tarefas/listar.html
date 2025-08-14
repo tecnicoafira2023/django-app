@@ -1,4 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="flex flex-col gap-6 mt-8">
+  <div class="flex justify-between items-center">
+    <div>
+      <h1 class="text-4xl font-bold text-white">Gerenciador de Tarefas</h1>
+      <p class="text-gray-400">Organize e acompanhe suas tarefas</p>
+    </div>
+    <a href="{% url 'criar_tarefa' %}" class="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-2 rounded-lg">+ Nova Tarefa</a>
+  </div>
+  <div class="flex gap-6">
+    <div class="bg-gray-900 border border-gray-700 rounded-lg p-6 flex-1 flex flex-col items-center">
+      <span class="text-green-400 text-3xl mb-2"><i class="fa fa-clock"></i></span>
+      <span class="text-2xl font-bold text-white">{{ pendentes_count }}</span>
+      <span class="text-gray-400">Pendentes</span>
+    </div>
+    <div class="bg-gray-900 border border-gray-700 rounded-lg p-6 flex-1 flex flex-col items-center">
+      <span class="text-green-400 text-3xl mb-2"><i class="fa fa-check-circle"></i></span>
+      <span class="text-2xl font-bold text-white">{{ concluidas_count }}</span>
+      <span class="text-gray-400">Concluídas</span>
+    </div>
+    <div class="bg-gray-900 border border-gray-700 rounded-lg p-6 flex-1 flex flex-col items-center">
+      <span class="text-blue-400 text-3xl mb-2"><i class="fa fa-plus-circle"></i></span>
+      <span class="text-2xl font-bold text-white">{{ total_count }}</span>
+      <span class="text-gray-400">Total</span>
+    </div>
+  </div>
+</div>
+
 <h1>Lista de Tarefas</h1>
+
 
 <a href="{% url 'criar_tarefa' %}">Criar nova tarefa</a>
 
@@ -24,3 +54,4 @@
 </ul>
 
 <a href="{% url 'limpar_concluidas' %}" style="color:red;">🧹 Limpar tarefas concluídas</a>
+{% endblock %}

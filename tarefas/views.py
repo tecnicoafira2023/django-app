@@ -15,6 +15,9 @@ class ListarTarefasView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['today'] = date.today()
+        context['pendentes_count'] = Task.objects.filter(done=False).count()
+        context['concluidas_count'] = Task.objects.filter(done=True).count()
+        context['total_count'] = Task.objects.count()
         return context
 
 class ListarTarefasPendentesView(ListView):

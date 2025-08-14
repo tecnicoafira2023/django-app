@@ -1,3 +1,5 @@
+{% extends 'base.html' %}
+{% block content %}
 <h1>Criar Tarefa</h1>
 <form method="post">
   {% csrf_token %}
@@ -5,3 +7,4 @@
   <button type="submit">Salvar</button>
   <a href="{% url 'listar_tarefas' %}" style="margin-left: 10px;">Cancelar</a>
 </form>
+{% endblock %}
